@@ -1,0 +1,40 @@
+C:\Users\Mikhail\source\repos\IoT Control center\IoT Control center\bin\Debug\IoT Control center.exe.config
+C:\Users\Mikhail\source\repos\IoT Control center\IoT Control center\bin\Debug\IoT Control center.exe
+C:\Users\Mikhail\source\repos\IoT Control center\IoT Control center\bin\Debug\IoT Control center.pdb
+C:\Users\Mikhail\source\repos\IoT Control center\IoT Control center\obj\Debug\IoT Control center.csprojAssemblyReference.cache
+C:\Users\Mikhail\source\repos\IoT Control center\IoT Control center\obj\Debug\MainWindow.g.cs
+C:\Users\Mikhail\source\repos\IoT Control center\IoT Control center\obj\Debug\App.g.cs
+C:\Users\Mikhail\source\repos\IoT Control center\IoT Control center\obj\Debug\IoT Control center_MarkupCompile.cache
+C:\Users\Mikhail\source\repos\IoT Control center\IoT Control center\obj\Debug\IoT Control center_MarkupCompile.lref
+C:\Users\Mikhail\source\repos\IoT Control center\IoT Control center\obj\Debug\MainWindow.baml
+C:\Users\Mikhail\source\repos\IoT Control center\IoT Control center\obj\Debug\IoT Control center.g.resources
+C:\Users\Mikhail\source\repos\IoT Control center\IoT Control center\obj\Debug\IoT_Control_center.Properties.Resources.resources
+C:\Users\Mikhail\source\repos\IoT Control center\IoT Control center\obj\Debug\IoT Control center.csproj.GenerateResource.cache
+C:\Users\Mikhail\source\repos\IoT Control center\IoT Control center\obj\Debug\IoT Control center.csproj.CoreCompileInputs.cache
+C:\Users\Mikhail\source\repos\IoT Control center\IoT Control center\obj\Debug\IoT Control center.exe
+C:\Users\Mikhail\source\repos\IoT Control center\IoT Control center\obj\Debug\IoT Control center.pdb
+C:\Users\Mikhail\source\repos\IoT Control center\IoT Control center\obj\Debug\App.baml
+C:\Users\Mikhail\source\repos\IoT Control center\IoT Control center\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mikhail\source\repos\IoT Control center\IoT Control center\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Mikhail\source\repos\IoT Control center\IoT Control center\obj\Debug\IoT Control center.csproj.CopyComplete
+C:\Users\Mikhail\source\repos\IoT Control center\IoT Control center\obj\Debug\IoT Control center_Content.g.cs
+C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\bin\Debug\IoT Control center.exe.config
+C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\bin\Debug\IoT Control center.exe
+C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\bin\Debug\IoT Control center.pdb
+C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\obj\Debug\IoT Control center.csprojAssemblyReference.cache
+C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\obj\Debug\MainWindow.g.cs
+C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\obj\Debug\App.g.cs
+C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\obj\Debug\IoT Control center_Content.g.cs
+C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\obj\Debug\IoT Control center_MarkupCompile.cache
+C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\obj\Debug\IoT Control center_MarkupCompile.lref
+C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\obj\Debug\App.baml
+C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\obj\Debug\MainWindow.baml
+C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\obj\Debug\IoT Control center.g.resources
+C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\obj\Debug\IoT_Control_center.Properties.Resources.resources
+C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\obj\Debug\IoT Control center.csproj.GenerateResource.cache
+C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\obj\Debug\IoT Control center.csproj.CoreCompileInputs.cache
+C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\obj\Debug\IoT Control center.csproj.CopyComplete
+C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\obj\Debug\IoT Control center.exe
+C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\obj\Debug\IoT Control center.pdb
