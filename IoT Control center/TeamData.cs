@@ -8,6 +8,25 @@ namespace IoT_Control_center
 {
     class TeamData
     {
+        public void UpdatePoliFill()
+        {
+            isPoli = !(string.IsNullOrEmpty(poliIOServ) || string.IsNullOrEmpty(poliThingName));
+        }
+
+        public void UpdateManipFill()
+        {
+            isManip = !(string.IsNullOrWhiteSpace(manipThingName) || string.IsNullOrWhiteSpace(manipIOServ));
+        }
+
+        public void UpdateTrL1Fill()
+        {
+            isTrL1 = !(string.IsNullOrWhiteSpace(trL1ThingName) || string.IsNullOrWhiteSpace(trL1IOServ));
+        }
+
+        public void UpdateTrl2Fill()
+        {
+            isTrL2 = !(string.IsNullOrWhiteSpace(trL2ThingName) || string.IsNullOrWhiteSpace(trL2IOServ));
+        }
         bool isTrL2;
         string trL2ThingName;
         string trL2IOServ;
@@ -22,7 +41,7 @@ namespace IoT_Control_center
         string trL1IOServ;
         public bool IsPoli
         {
-            get => !(string.IsNullOrEmpty(poliIOServ) || string.IsNullOrEmpty(poliThingName)) || isPoli;
+            get => isPoli;
             set => isPoli = value;
         }
         public string PoliThingName
@@ -45,9 +64,9 @@ namespace IoT_Control_center
         }
         public bool IsManip
         {
-            get => !(string.IsNullOrWhiteSpace(manipThingName) || string.IsNullOrWhiteSpace(manipIOServ)) || isManip;
+            get =>  isManip;
 
-            set { isManip = value; }
+            set => isManip = value;
         }
         public string ManipThingName
         {
@@ -67,7 +86,8 @@ namespace IoT_Control_center
                 var _ = IsManip;
             }
         }
-        public bool IsTrL1 { get => !(string.IsNullOrWhiteSpace(trL1ThingName) || string.IsNullOrWhiteSpace(trL1IOServ)) || isTrL1; set { isTrL1 = value; } }
+        public bool IsTrL1 { get =>  isTrL1; set => isTrL1 = value;
+        }
         public string TrL1ThingName
         {
             get => trL1ThingName;
@@ -86,7 +106,8 @@ namespace IoT_Control_center
                 _ = IsTrL1;
             }
         }
-        public bool IsTrL2 { get => !(string.IsNullOrWhiteSpace(trL2ThingName) || string.IsNullOrWhiteSpace(trL2IOServ)) || isTrL2; set { isTrL2 = value; } }
+        public bool IsTrL2 { get =>   isTrL2; set => isTrL2 = value;
+        }
         public string TrL2ThingName
         {
             get => trL2ThingName;

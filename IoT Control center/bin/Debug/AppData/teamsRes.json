@@ -18,7 +18,7 @@
     "IsPoli": true,
     "PoliThingName": "21",
     "PoliIOServ": "753",
-    "IsManip": true,
+    "IsManip": false,
     "ManipThingName": null,
     "ManipIOServ": null,
     "IsTrL1": false,
