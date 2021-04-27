@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using System.Windows.Controls.Primitives;
 using System.Windows.Threading;
 
 namespace IoT_Control_center
@@ -24,12 +25,13 @@ namespace IoT_Control_center
     public partial class MainWindow : Window
     {
         public List<Equipment> items = new List<Equipment>();
-
+        
         void UpdateHandler(object sender, EventArgs args)
         {
             foreach (Equipment eq in items)
             {
                 eq.UpdateProperties();
+                eq.LogProps();
             }
         }
 
@@ -37,7 +39,7 @@ namespace IoT_Control_center
         {
             foreach (var data in TeamButtonPanel.Children)
             {
-                if ((data as Button)?.DataContext is TeamData currentData)
+                if ((data as ToggleButton)?.DataContext is TeamData currentData)
                 {
                     currentData.UpdatePoliFill();
                     currentData.UpdateManipFill();
@@ -65,20 +67,19 @@ namespace IoT_Control_center
             UpdateIOTimer.Interval = new TimeSpan(0, 0, 0, 5);
             UpdateIOTimer.Tick += UpdateHandler;
             UpdateIOTimer.Start();
-            Console.WriteLine(789456);
             var y = File.ReadAllText(@"AppData\staticRes.json");
             x = y == "" ? new StaticData() : JsonConvert.DeserializeObject<StaticData>(y);
-
             InitializeComponent();
             foreach (var item in teams)
             {
-                var tmpButton = new Button()
+                var tmpButton = new ToggleButton()
                     {Content = $"Team {TeamButtonPanel.Children.Count + 1}", Margin = new Thickness(3), Width = 100};
                 tmpButton.DataContext = item;
                 tmpButton.Click += SetTeamData;
                 TeamButtonPanel.Children.Add(tmpButton);
             }
 
+            
             StaticResPanel.DataContext = x;
         }
 
@@ -92,7 +93,7 @@ namespace IoT_Control_center
         {
             teams.Add(new TeamData());
 
-            var tmpButton = new Button()
+            var tmpButton = new ToggleButton()
                 {Content = $"Team {TeamButtonPanel.Children.Count + 1}", Margin = new Thickness(3), Width = 100};
 
             tmpButton.DataContext = teams.Last();
@@ -102,19 +103,32 @@ namespace IoT_Control_center
 
         private void SetTeamData(object sender, RoutedEventArgs args)
         {
-            TeamDataPanel.DataContext = (sender as Button).DataContext;
+            foreach (var btn in TeamButtonPanel.Children)
+            {
+                ((ToggleButton) btn).IsChecked = false;
+            }
+
+            ((ToggleButton) sender).IsChecked = true;
+            TeamDataPanel.DataContext = (sender as ToggleButton).DataContext;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             var y = JsonConvert.SerializeObject(x, Formatting.Indented);
             File.WriteAllText(@"AppData\staticRes.json", y, Encoding.UTF8);
-            File.WriteAllText(@"AppData\teamsRes.json", JsonConvert.SerializeObject(teams, Formatting.Indented));
+            File.WriteAllText(@"AppData\teamsRes.json", JsonConvert.SerializeObject(teams.Where(t => t != new TeamData()), Formatting.Indented));
         }
 
         private void FromItemLB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             PropertyToChagePanel.DataContext = (sender as ListBox)?.SelectedItem;
         }
+
+        private void RemoveSelectedTeam(object sender, RoutedEventArgs e)
+        {
+            TeamButtonPanel.Children.Remove((UIElement) sender);
+            teams.Remove(sender as TeamData);
+        }
+        
     }
 }

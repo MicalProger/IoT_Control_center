@@ -10,23 +10,34 @@ namespace IoT_Control_center
     {
         public void UpdatePoliFill()
         {
-            isPoli = !(string.IsNullOrEmpty(poliIOServ) || string.IsNullOrEmpty(poliThingName));
+            var val = !string.IsNullOrWhiteSpace(poliIOServ);
+            var val02  = !string.IsNullOrWhiteSpace(poliThingName);
+            isPoli = val || val02;
+                
         }
 
         public void UpdateManipFill()
         {
-            isManip = !(string.IsNullOrWhiteSpace(manipThingName) || string.IsNullOrWhiteSpace(manipIOServ));
+            var val = !string.IsNullOrWhiteSpace(manipIOServ);
+            var val02  = !string.IsNullOrWhiteSpace(manipThingName);
+            isManip = val || val02;
         }
 
         public void UpdateTrL1Fill()
         {
-            isTrL1 = !(string.IsNullOrWhiteSpace(trL1ThingName) || string.IsNullOrWhiteSpace(trL1IOServ));
+            var val = !string.IsNullOrWhiteSpace(trL1IOServ);
+            var val02  = !string.IsNullOrWhiteSpace(trL1ThingName);
+            isTrL1 = val || val02;
         }
 
         public void UpdateTrl2Fill()
         {
-            isTrL2 = !(string.IsNullOrWhiteSpace(trL2ThingName) || string.IsNullOrWhiteSpace(trL2IOServ));
+            var val = !string.IsNullOrWhiteSpace(trL2IOServ);
+            var val02  = !string.IsNullOrWhiteSpace(trL2ThingName);
+            isTrL1 = val || val02;
         }
+        
+        public string Name { get; set; }
         bool isTrL2;
         string trL2ThingName;
         string trL2IOServ;

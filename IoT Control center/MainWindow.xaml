@@ -150,7 +150,11 @@
                     <Border BorderThickness="2" BorderBrush="#D5DFE5" Margin="5, 2.5">
                         <ScrollViewer Margin="0, 2.5">
                             <WrapPanel Margin="5, 2.5" Name="TeamButtonPanel">
-
+                                <WrapPanel.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Remove team" Click="RemoveSelectedTeam"/>
+                                    </ContextMenu>
+                                </WrapPanel.ContextMenu>
                             </WrapPanel>
                         </ScrollViewer>
                     </Border>

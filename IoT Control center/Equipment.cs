@@ -12,6 +12,11 @@ namespace IoT_Control_center
         {
             
         }
+
+        public void LogProps()
+        {
+            
+        }
         public string Ip;
         public string Name;
         public List<ShowProrerty> UDP;
