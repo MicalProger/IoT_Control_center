@@ -60,6 +60,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Equipment.cs" />
+    <Compile Include="Pages\ControlPage.xaml.cs">
+      <DependentUpon>ControlPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ShowProrerty.cs" />
     <Compile Include="StaticData.cs" />
     <Compile Include="TeamData.cs" />
@@ -75,6 +81,8 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\ControlPage.xaml" />
+    <Page Include="Pages\SettingsPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

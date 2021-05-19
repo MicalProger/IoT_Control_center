@@ -1,6 +1,9 @@
 [
   {
     "Name": null,
+    "IsSmCam": true,
+    "SmCamThingName": "sdwadsa",
+    "SmCamIOServ": "ada",
     "IsPoli": true,
     "PoliThingName": null,
     "PoliIOServ": "452154",
@@ -17,6 +20,9 @@
   },
   {
     "Name": null,
+    "IsSmCam": false,
+    "SmCamThingName": null,
+    "SmCamIOServ": null,
     "IsPoli": false,
     "PoliThingName": null,
     "PoliIOServ": null,
@@ -33,6 +39,9 @@
   },
   {
     "Name": null,
+    "IsSmCam": false,
+    "SmCamThingName": null,
+    "SmCamIOServ": null,
     "IsPoli": false,
     "PoliThingName": null,
     "PoliIOServ": null,
@@ -49,6 +58,9 @@
   },
   {
     "Name": null,
+    "IsSmCam": false,
+    "SmCamThingName": null,
+    "SmCamIOServ": null,
     "IsPoli": false,
     "PoliThingName": null,
     "PoliIOServ": null,

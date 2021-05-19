@@ -38,3 +38,7 @@ C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\obj\Debug\I
 C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\obj\Debug\IoT Control center.csproj.CopyComplete
 C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\obj\Debug\IoT Control center.exe
 C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\obj\Debug\IoT Control center.pdb
+C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\obj\Debug\Pages\ControlPage.g.cs
+C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\obj\Debug\Pages\ControlPage.baml
+C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\obj\Debug\Pages\SettingsPage.g.cs
+C:\Users\Mikhail\RiderProjects\IoT Control center\IoT Control center\obj\Debug\Pages\SettingsPage.baml

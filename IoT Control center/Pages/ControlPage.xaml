@@ -1,0 +1,316 @@
+<Page x:Class="IoT_Control_center.Pages.ControlPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:IoT_Control_center.Pages"
+      mc:Ignorable="d"
+      Title="ControlPage" >
+<Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="IO transfer" Margin="5, 5, 2.5, 5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <ToggleButton Margin="5">ThingWorx connection</ToggleButton>
+                    <ToggleButton Margin="5" Grid.Column="1">Equipment connection</ToggleButton>
+                    <CheckBox Margin="5" Grid.Row="1">Send data to robots</CheckBox>
+                    <CheckBox Margin="5" Grid.Row="2">Block resending transmition</CheckBox>
+                    <CheckBox Margin="5" Grid.Column="1" Grid.Row="1">Send data to controls</CheckBox>
+                    <CheckBox Margin="5" Grid.Column="1" Grid.Row="2">Parse data from equipment</CheckBox>
+                </Grid>
+                <Border Grid.Row="1" Margin="5" BorderThickness="1" BorderBrush="#FFABADB3">
+                    <ScrollViewer Margin="2" x:Name="ThingWorxLogPanel" ToolTip="Log from ThingWorx">
+                        <StackPanel Orientation="Vertical">
+                        </StackPanel>
+                    </ScrollViewer>
+                </Border>
+                <Border Grid.Row="2" Margin="5" BorderThickness="1" BorderBrush="#FFABADB3">
+                    <ScrollViewer x:Name="EquipmentsStateLogPanel" Margin="2" ToolTip="Log from Control Center">
+                        <StackPanel Orientation="Vertical" />
+                    </ScrollViewer>
+                </Border>
+                <Border Grid.Row="3" Margin="5" BorderThickness="1" BorderBrush="#FFABADB3">
+                    <ScrollViewer Margin="2" ToolTip="Log from equipment">
+                        <StackPanel Orientation="Vertical" />
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="View and control" Grid.Column="1" Margin="2.5, 5">
+            <Grid Margin="5" VerticalAlignment="Stretch" Name="PropsGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35" />
+                    <RowDefinition />
+                    <RowDefinition Height="100" />
+                </Grid.RowDefinitions>
+                <ComboBox Margin="0, 5" SelectedIndex="0" Name="ItemsCB" SelectionChanged="ItemsCB_OnSelectionChanged">
+                    <ComboBoxItem>Item to control</ComboBoxItem>
+                </ComboBox>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="26" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock Margin="5">UDP</TextBlock>
+                    <TextBlock Margin="5" Grid.Column="1">From item</TextBlock>
+                    <TextBlock Margin="5" Grid.Column="2">From thing</TextBlock>
+                    <ListBox Grid.Row="1" Grid.Column="0" Margin="5, 5, 2.5, 5"
+                             SelectionChanged="FromItemLB_SelectionChanged"
+                             ItemsSource="{Binding UDP}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding PropName}" />
+                                    <TextBlock Text="{Binding Val}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <ListBox Grid.Row="1" Grid.Column="1" Margin="2.5, 5" x:Name="FromItemLB" ItemsSource="{Binding FromHardwere}"
+                             SelectionChanged="FromItemLB_SelectionChanged">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding PropName}" />
+                                    <TextBlock Text="{Binding Val}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <ListBox Grid.Row="1" Grid.Column="2" Margin="2.5, 5, 5, 5"
+                             SelectionChanged="FromItemLB_SelectionChanged"
+                             ItemsSource="{Binding FromSoftwere}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding PropName}" />
+                                    <TextBlock Text="{Binding Val}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+                <GroupBox Grid.Row="2" Margin="5, 2.5, 5, 5" Header="Property">
+                    <Grid x:Name="PropertyToChagePanel">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock Margin="2" VerticalAlignment="Center">Property name:</TextBlock>
+                        <TextBlock Margin="2" VerticalAlignment="Center" Grid.Row="1">Value:</TextBlock>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Margin="5"
+                                   Text="{Binding PropNameClear}" />
+                        <TextBox Grid.Column="1" Grid.Row="1" Margin="5" Text="{Binding Val}" />
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Column="2" Header="Teams and settings" Margin="2.5, 5, 5, 5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="500" />
+
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+                    <Button Grid.Row="1" Margin="5" Content="Add team" Click="AddNewTeam" />
+                    <Border BorderThickness="2" BorderBrush="#D5DFE5" Margin="5, 2.5">
+                        <ScrollViewer Margin="0, 2.5">
+                            <WrapPanel Margin="5, 2.5" Name="TeamButtonPanel">
+                                
+                            </WrapPanel>
+                        </ScrollViewer>
+                    </Border>
+                </Grid>
+                <Grid Grid.Row="1" Margin="5, 2.5">
+                    
+                </Grid>
+                <GroupBox Header="Team settings" Grid.Row="1" Margin="5, 2.5, 5, 5">
+                    <Grid x:Name="TeamDataPanel">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition Height="25" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="108" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Margin="5">Application key:</TextBlock>
+                            <TextBox Text="{Binding AppKey}" Grid.Column="1" Margin="3" />
+                        </Grid>
+                        <Grid Margin="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="17" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <CheckBox Margin="5, 0" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"
+                                      IsChecked="{Binding IsPoli}">
+                                Politizer
+                            </CheckBox>
+                            <Border Grid.Row="1" BorderThickness="2" BorderBrush="#D5DFE5" Margin="5, 2.5"
+                                    IsEnabled="False">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock VerticalAlignment="Center" Margin="5, 0" Text="IO service name:" />
+                                    <TextBlock VerticalAlignment="Center" Margin="5, 0" Grid.Row="1" Text="Thing name:" />
+                                    <TextBox Text="{Binding PoliIOServ}" Grid.Column="1" Margin="2" />
+                                    <TextBox Text="{Binding PoliThingName}" Grid.Column="1" Margin="2" Grid.Row="1" />
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Grid Grid.Row="1" Margin="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="17" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <CheckBox Margin="5, 0" IsChecked="{Binding IsManip}" Checked="CheckBox_Checked"
+                                      Unchecked="CheckBox_Checked">
+                                Manipulator
+                            </CheckBox>
+                            <Border Grid.Row="1" BorderThickness="2" BorderBrush="#D5DFE5" Margin="5, 2.5"
+                                    IsEnabled="False">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock VerticalAlignment="Center" Margin="5, 0" Text="IO service name:" />
+                                    <TextBlock VerticalAlignment="Center" Margin="5, 0" Grid.Row="1" Text="Thing name:" />
+                                    <TextBox Text="{Binding ManipIOServ}" Grid.Column="1" Margin="2" />
+                                    <TextBox Text="{Binding ManipThingName}" Grid.Column="1" Margin="2" Grid.Row="1" />
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Grid Grid.Row="2" Margin="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="17" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <CheckBox IsChecked="{Binding IsTrL1}" Margin="5, 0" Content="Traffic light 01"
+                                      Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" />
+                            <Border Grid.Row="1" BorderThickness="2" BorderBrush="#D5DFE5" Margin="5, 2.5"
+                                    IsEnabled="False">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock VerticalAlignment="Center" Margin="5, 0" Text="IO service name:" />
+                                    <TextBlock VerticalAlignment="Center" Margin="5, 0" Grid.Row="1" Text="Thing name:" />
+                                    <TextBox Text="{Binding TrL1IOServ}" Grid.Column="1" Margin="2" />
+                                    <TextBox Text="{Binding TrL1ThingName}" Grid.Column="1" Margin="2" Grid.Row="1" />
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Grid Grid.Row="3" Margin="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="17" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <CheckBox Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"
+                                      IsChecked="{Binding IsTrL2}" Margin="5, 0">
+                                Traffic light 02
+                            </CheckBox>
+                            <Border Grid.Row="1" BorderThickness="2" BorderBrush="#D5DFE5" Margin="5, 2.5"
+                                    IsEnabled="False">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock VerticalAlignment="Center" Margin="5, 0" Text="IO service name:" />
+                                    <TextBlock VerticalAlignment="Center" Margin="5, 0" Grid.Row="1" Text="Thing name:" />
+                                    <TextBox Text="{Binding TrL2IOServ}" Grid.Column="1" Margin="2" />
+                                    <TextBox Text="{Binding TrL2ThingName}" Grid.Column="1" Margin="2" Grid.Row="1" />
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Grid Grid.Row="4" Margin="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="17" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <CheckBox Margin="5, 0" IsChecked="{Binding IsSmCam}" Checked="CheckBox_Checked"
+                                      Unchecked="CheckBox_Checked">
+                                SmartCamera
+                            </CheckBox>
+                            <Border Grid.Row="1" BorderThickness="2" BorderBrush="#D5DFE5" Margin="5, 2.5"
+                                    IsEnabled="False">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock VerticalAlignment="Center" Margin="5, 0" Text="IO service name:" />
+                                    <TextBlock VerticalAlignment="Center" Margin="5, 0" Grid.Row="1" Text="Thing name:" />
+                                    <TextBox Text="{Binding SmCamIOServ}" Grid.Column="1" Margin="2" />
+                                    <TextBox Text="{Binding SmCamThingName}" Grid.Column="1" Margin="2" Grid.Row="1" />
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Page>

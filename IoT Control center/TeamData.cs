@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IoT_Control_center
+﻿namespace IoT_Control_center
 {
     class TeamData
     {
+
+        public void UpdateSmCamFill()
+        {
+            var val = !string.IsNullOrWhiteSpace(smCamThingName);
+            var val02  = !string.IsNullOrWhiteSpace(smCamIOServ);
+            isSmCam = val || val02;
+        }
         public void UpdatePoliFill()
         {
             var val = !string.IsNullOrWhiteSpace(poliIOServ);
@@ -49,7 +50,28 @@ namespace IoT_Control_center
         string manipIOServ;
         bool isTrL1;
         string trL1ThingName;
-        string trL1IOServ;
+        string trL1IOServ; 
+        bool isSmCam; 
+        string smCamThingName;
+        string smCamIOServ;
+
+        public bool IsSmCam
+        {
+            get => isSmCam;
+            set => isSmCam = value;
+        }
+
+        public string SmCamThingName
+        {
+            get => smCamThingName;
+            set => smCamThingName = value;
+        }
+        public string SmCamIOServ
+        {
+            get => smCamIOServ;
+            set => smCamIOServ = value;
+        }
+        
         public bool IsPoli
         {
             get => isPoli;

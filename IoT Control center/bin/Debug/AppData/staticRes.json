@@ -1,7 +1,8 @@
 ﻿{
-  "ServerIP": "",
+  "ServerIP": "fdgdfg",
   "PoliIP": "",
   "ManipIP": "",
   "TrafficLight1IP": "",
-  "TrafficLight2IP": ""
+  "TrafficLight2IP": "",
+  "CamIP": ""
 }
